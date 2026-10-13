@@ -95,6 +95,11 @@ return [
             'key' => env('DEEPSEEK_API_KEY'),
         ],
 
+        'sarvam' => [
+            'driver' => 'sarvam',
+            'key' => env('SARVAM_API_KEY'),
+        ],
+
         'eleven' => [
             'driver' => 'eleven',
             'key' => env('ELEVENLABS_API_KEY'),

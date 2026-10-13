@@ -34,6 +34,7 @@ use Laravel\Ai\Providers\OpenAiCompatibleProvider;
 use Laravel\Ai\Providers\OpenAiProvider;
 use Laravel\Ai\Providers\OpenRouterProvider;
 use Laravel\Ai\Providers\Provider;
+use Laravel\Ai\Providers\SarvamProvider;
 use Laravel\Ai\Providers\TypeSafeProvider;
 use Laravel\Ai\Providers\VoyageAiProvider;
 use Laravel\Ai\Providers\XaiProvider;
@@ -343,6 +344,17 @@ class AiManager extends MultipleInstanceManager
     public function createDeepseekDriver(array $config): DeepSeekProvider
     {
         return new DeepSeekProvider(
+            $config,
+            $this->app->make(Dispatcher::class)
+        );
+    }
+
+    /**
+     * Create a Sarvam powered instance.
+     */
+    public function createSarvamDriver(array $config): SarvamProvider
+    {
+        return new SarvamProvider(
             $config,
             $this->app->make(Dispatcher::class)
         );
